@@ -2,6 +2,36 @@
 
 This repository contains benchmarks for measuring the startup time of a Moonbeam node using different JavaScript/TypeScript runtimes.
 
+## Latest Benchmark Results
+
+```bash
+Benchmark 1: native:bun
+  Time (mean ± σ):      4.281 s ±  0.097 s    [User: 22.953 s, System: 0.491 s]
+  Range (min … max):    4.133 s …  4.411 s    10 runs
+ 
+Benchmark 2: native:node
+  Time (mean ± σ):      5.153 s ±  0.066 s    [User: 24.277 s, System: 0.584 s]
+  Range (min … max):    5.065 s …  5.294 s    10 runs
+ 
+Benchmark 3: docker:node
+  Time (mean ± σ):      5.332 s ±  0.104 s    [User: 2.419 s, System: 0.211 s]
+  Range (min … max):    5.170 s …  5.517 s    10 runs
+ 
+Benchmark 4: docker:bun
+  Time (mean ± σ):      4.404 s ±  0.078 s    [User: 0.758 s, System: 0.116 s]
+  Range (min … max):    4.286 s …  4.562 s    10 runs
+ 
+  Time (mean ± σ):      6.151 s ±  0.104 s    [User: 2.744 s, System: 0.273 s]
+  Range (min … max):    6.061 s …  6.407 s    10 runs
+ 
+Summary
+  native:bun ran
+    1.03 ± 0.03 times faster than docker:bun
+    1.20 ± 0.03 times faster than native:node
+    1.25 ± 0.04 times faster than docker:node
+    1.44 ± 0.04 times faster than testcontainers:node
+```
+
 ## Prerequisites
 
 1. Install Node.js v23
@@ -143,20 +173,4 @@ docker ps
 
 # Stop all running containers (if needed)
 docker stop $(docker ps -q)
-```
-
-## Latest Benchmark Results
-
-```bash
-Benchmark 1: bun
-  Time (mean ± σ):      1.195 s ±  0.024 s    [User: 11.054 s, System: 0.294 s]
-  Range (min … max):    1.160 s …  1.220 s    10 runs
- 
-Benchmark 2: node
-  Time (mean ± σ):      2.678 s ±  0.034 s    [User: 13.570 s, System: 0.538 s]
-  Range (min … max):    2.616 s …  2.732 s    10 runs
- 
-Summary
-  bun ran
-    2.24 ± 0.05 times faster than node
 ```
