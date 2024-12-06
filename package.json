@@ -1,0 +1,29 @@
+{
+  "name": "node-start-test",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "native": "bun run scripts/native.ts",
+    "docker": "bun run scripts/docker.ts",
+    "compile": "bun run scripts/compile-wasm.ts compile -b ./moonbeam -o wasm -c moonbase-dev",
+    "native:node": "node --import tsx scripts/native-node.ts",
+    "docker:node": "node --import tsx scripts/docker.ts",
+    "bench": "hyperfine -n native:bun 'bun run native' -n native:node 'node --import tsx scripts/native-node.ts' -n docker:node 'node --import tsx scripts/docker.ts' -n docker:bun 'bun run docker' -n testcontainers:node 'node --import tsx scripts/testcontainers.ts' -w 5"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "@polkadot/api": "^15.0.1",
+    "@polkadot/api-augment": "^15.0.1",
+    "@types/dockerode": "^3.3.32",
+    "@types/yargs": "^17.0.33",
+    "dockerode": "^4.0.2",
+    "testcontainers": "^10.16.0",
+    "tsx": "^4.19.2",
+    "yargs": "^17.7.2"
+  }
+}
